@@ -1,0 +1,25 @@
+﻿@model List<Movie>
+
+@{
+    ViewData["title"] = "Список фильмов";
+}
+
+<h1>Список фильмов</h1>
+<a asp-action="Create" asp-controller="Movies">
+    Создать новый фильм
+</a>
+<ol>
+@foreach(Movie movie in Model){
+    <li>
+            <a asp-action="Detail" asp-controller="Movies"
+            asp-route-id="@movie.Id">
+            @movie.Title
+        </a>
+
+            <a class="text-danger" asp-action="Delete" asp-controller="Movies"
+           asp-route-id="@movie.Id">
+                X
+            </a>
+    </li>
+}
+</ol>

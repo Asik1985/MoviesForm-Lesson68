@@ -1,0 +1,57 @@
+﻿@model Person;
+
+<form method="post">
+    <div>
+        <div asp-validation-summary="All"></div>
+        <p>
+            <label asp-for="Name" ></label><br />
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" />
+        </p>
+        <p>
+            <label asp-for="Age" /><br />
+            <input asp-for="Age" />
+            <span asp-validation-for="Age" />
+        </p>
+        <p>
+            <label asp-for="Email" /><br />
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" />
+        </p>
+        <p>
+            <label asp-for="Password" /><br />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </p>
+        <p>
+            <label asp-for="PasswordConfirm" /><br />
+            <input asp-for="PasswordConfirm" />
+            <span asp-validation-for="PasswordConfirm" />
+        </p>
+        <p>
+            <input type="submit" value="Send" />
+        </p>
+    </div>
+</form>
+<style>
+    .field-validation-error {
+        color: #b94a48;
+    }
+
+    input.input-validation-error {
+        border: 5px solid #b94a48;
+    }
+
+    input.valid {
+        border: 5px solid #16a085;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+</style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

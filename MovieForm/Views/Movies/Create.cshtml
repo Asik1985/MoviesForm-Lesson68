@@ -1,0 +1,63 @@
+﻿@model Movie
+
+@{
+    ViewData["title"] = "Создать фильм";
+}
+
+<h1>Создать фильм</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" asp-controller="Movies" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form_row">
+                <label asp-for="Title">
+                    Название
+                    <input asp-for="Title" value="" type="text">
+                </label>
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="form_row">
+                <label asp-for="Description">
+                    Описание
+                    <input asp-for="Description" value="" type="text">
+                </label>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form_row">
+                <label asp-for="ReleaseDate">
+                    Дата релиза
+                    <input asp-for="ReleaseDate">
+                </label>
+                <span asp-validation-for="ReleaseDate"></span>
+            </div>
+            <div class="form_row">
+                <label asp-for="CategoryId">
+                    Категории
+                    @if (ViewBag.Categories != null)
+                    {
+                        <select asp-for="CategoryId" asp-items="ViewBag.Categories">
+                            <option selected="selected" disabled="disabled">Все</option>
+                        </select>
+                        <span asp-validation-for="CategoryId"></span>
+                    }
+                </label>
+            </div>
+            <div class="form_row">
+                <label asp-for="Price">
+                    Стоимость
+                    <input asp-for="Price">
+                    <span asp-validation-for="Price"></span>
+                </label>
+            </div>
+            <button type="submit"> Добавить </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+

@@ -1,0 +1,9 @@
+﻿@model Movie
+@{
+    ViewData["title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+<p>Цена: @Model.Price</p>
+<p>Категория: @Model.Category.Name</p>
